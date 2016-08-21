@@ -5,6 +5,8 @@
  */
 package AlgoritmoSecuencial;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aldair
@@ -17,7 +19,7 @@ public class Ejercicio3 extends javax.swing.JFrame {
     public Ejercicio3() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        txtSalario.requestFocusInWindow();
         
     }
 
@@ -32,6 +34,13 @@ public class Ejercicio3 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtSalarioF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,6 +58,53 @@ public class Ejercicio3 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        jLabel2.setText("Salario");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSalarioKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 200, 40));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        jLabel3.setText("Salario Final");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+
+        txtSalarioF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSalarioFKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtSalarioF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 40));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("Procesador De Datos");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 240, 40));
+
+        cmdCalcular.setBackground(new java.awt.Color(0, 0, 102));
+        cmdCalcular.setForeground(new java.awt.Color(255, 255, 255));
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+
+        cmdBorrar.setBackground(new java.awt.Color(0, 0, 102));
+        cmdBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 70, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aldair\\Desktop\\istock_000019699924small.jpg")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 340));
@@ -68,9 +124,62 @@ public class Ejercicio3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         System.exit(0);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String sal;
+        
+        double Sal, res1;
+        
+        if(txtSalario.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Por favor digite su saldo","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else{
+        
+        try{    
+        Sal=Double.parseDouble(txtSalario.getText());
+        
+        res1=(Sal+(Sal*0.015));
+        
+        txtSalarioF.setText(""+res1);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"la cantidad que digito en el saldo es erronea, por favor corrija","ERROR",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        
+        txtSalario.setText("");
+        txtSalarioF.setText("");
+        
+        txtSalario.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSalarioKeyTyped
+
+    private void txtSalarioFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioFKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSalarioFKeyTyped
 
     /**
      * @param args the command line arguments
@@ -108,8 +217,15 @@ public class Ejercicio3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtSalarioF;
     // End of variables declaration//GEN-END:variables
 }
