@@ -74,6 +74,7 @@ public class Ejercicio3 extends javax.swing.JFrame {
         jLabel3.setText("Salario Final");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
+        txtSalarioF.setEditable(false);
         txtSalarioF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSalarioFKeyTyped(evt);
@@ -145,7 +146,7 @@ public class Ejercicio3 extends javax.swing.JFrame {
         
         txtSalarioF.setText(""+res1);
         }
-        catch(Exception e){
+        catch(Exception c){
             JOptionPane.showMessageDialog(null,"la cantidad que digito en el saldo es erronea, por favor corrija","ERROR",JOptionPane.WARNING_MESSAGE);
         }
         
@@ -162,7 +163,6 @@ public class Ejercicio3 extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void txtSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKeyTyped
-        char c=evt.getKeyChar();
         
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
@@ -172,13 +172,7 @@ public class Ejercicio3 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSalarioKeyTyped
 
     private void txtSalarioFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioFKeyTyped
-        char c=evt.getKeyChar();
         
-        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
-            getToolkit();
-            
-            evt.consume();
-        }
     }//GEN-LAST:event_txtSalarioFKeyTyped
 
     /**
